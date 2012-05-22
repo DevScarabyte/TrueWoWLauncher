@@ -14,8 +14,6 @@ realm='realmlist.wtf'
 realm1=config.realm1
 realm1name=config.realm1name
 update=config.update
-addon=config.addon
-launcher=config.launcher
 realm2=config.realm2
 realm2name=config.realm2name
 realm3=config.realm3
@@ -25,15 +23,6 @@ realmamount=config.realmamount
 test="this is it"
 
 
-if update == "1":
-	if addon == "yes":
-		addoncheck = os.path.isfile('../Interdace/AddOns/TrueWoWTicketMaster/TrueWoWTicketMaster.toc')
-		if addoncheck == True:
-			os.system('cd ../Interface/AddOns/TrueWoWTicketMaster && git pull -u')
-		if addoncheck == False:
-			os.system('cd ../Interface/AddOns/ && git clone git://github.com/gamehacker953/TicketMaster.git TrueWoWTicketMaster')
-	if launcher == "yes":
-		os.system('git pull -u')
 if realmamount == "3":
 	check1 = os.path.isfile(realm1)
 	check2 = os.path.isfile(realm2)
@@ -166,7 +155,10 @@ if realmamount == "2":
 		if change2 == 'n':
 			print 'Starting WoW'
 			os.system('start ../Wow.exe')
-
 if realmamount == "1":
 	os.system('start ../Wow.exe')
+updatecheck=os.path.isfile('update1.exe')
+if updatecheck == True:
+	os.system('del update.exe')
+	os.rename('update1.exe', 'update.exe')
 time.sleep(5)
